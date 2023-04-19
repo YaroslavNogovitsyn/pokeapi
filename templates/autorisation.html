@@ -1,0 +1,30 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Autorisation</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css')}}">
+</head>
+
+<body>
+
+    <div class="form">
+        <h1 class="auth">Welcome back!</h1>
+        <div>
+            <input type="email" class="" id="email" aria-describedby="emailHelp"
+                placeholder="Enter your email" name="email">
+            <p></p>
+            <input type="password" class="form-control" id="password" placeholder="Enter your password" name="password">
+            <p></p>
+            <div class="form-group form-check">
+                <input type="checkbox" class="form-check-input" id="remembermehere" name="accept">
+                <label class="remember" for="acceptRules">Remember me here
+                </label>
+            </div>
+            <p> </p>
+            <button type="submit" class="btn">Log in</button>
+        </div>
+
+    </div>
+</body>
+
+</html>
