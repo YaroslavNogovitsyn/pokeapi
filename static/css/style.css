@@ -74,11 +74,21 @@ body {
     font-size: 18px;
 }
 
-.form-contact .invalid {
+.form .invalid {
     display: inline-block;
     background: #FF9898;
 }
 
-.form-contact .invalid-feedback {
+.form .invalid-feedback {
     color: #CC0000;
+}
+
+.flash {padding: 10px;}
+.flash.success {
+	border: 1px solid #21DB56;
+	background: #AEFFC5;
+}
+.flash.error {
+	border: 1px solid #FF4343;
+	background: #FF9C9C;
 }

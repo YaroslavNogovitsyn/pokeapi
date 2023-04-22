@@ -28,7 +28,7 @@ def index():
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if current_user.is_authenticated:
-        return redirect(url_for('profile'))
+        return redirect(url_for('index'))
 
     form = LoginForm()
     if form.validate_on_submit():
@@ -36,7 +36,7 @@ def login():
         user = db_sess.query(User).filter(User.email == form.email.data).first()
         if user and user.check_password(form.password.data):
             login_user(user, remember=form.remember_me.data)
-            return redirect(request.args.get("next") or url_for("/"))
+            return redirect(request.args.get("next") or url_for("index"))
         flash("Неверная пара логин/пароль", "error")
     return render_template('autorisation.html', form=form)
 
@@ -62,7 +62,7 @@ def register():
         user.set_password(form.password.data)
         db_sess.add(user)
         db_sess.commit()
-        return redirect('/login')
+        return redirect(url_for('login'))
     return render_template('registration.html', title='Регистрация', form=form)
 
 
@@ -76,7 +76,7 @@ def logout():
 
 @app.errorhandler(404)
 def pageNotFound(error):
-    return render_template('page404.html', title='Страница не найдена', menu=menu), 404
+    return render_template('page404.html', title='Страница не найдена'), 404
 
 
 def main():
