@@ -3,7 +3,7 @@ import pprint
 
 
 def pars(name='pikachu'):
-    URL = 'https://pokeapi.co/api/v2/pokemon/pikachu'
+    URL = f'https://pokeapi.co/api/v2/pokemon/{name}'
     params = {}
     response = requests.get(URL, params=params)
     result = response.json()
