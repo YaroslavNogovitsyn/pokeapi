@@ -6,7 +6,7 @@
 </head>
 
 <body>
-<form class="form" action="{{ url_for('login') }}" method="post">>
+<form class="form" action="{{ url_for('login') }}" method="post">
     <h1 class="auth">Welcome back!</h1>
     <div>
         {% for cat, msg in get_flashed_messages(True) %}
@@ -23,6 +23,7 @@
         </div>
         <p></p>
         {{ form.submit(class_="btn") }}
+        <p class="btn"><a href="{{url_for('register')}}">REGISTER</a>
     </div>
 
 </form>

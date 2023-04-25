@@ -5,7 +5,7 @@ from data import db_session
 from data.users import User
 from forms.login_form import LoginForm
 from forms.register_form import RegisterForm
-from parse import pars
+from parse import find_pokemon
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'my_secret_key'
@@ -68,9 +68,13 @@ def register():
 
 
 @app.route('/find_poke', methods=['GET', 'POST'])
+@login_required
 def find_poke():
-    print(pars(request.form.get('search_poke')))
-    return render_template('find_pokemon.html')
+    pokemon = find_pokemon(request.form.get('search_poke'))
+    name = list(pokemon.values())[0]
+    if pokemon:
+        return render_template('find_pokemon.html', pokemon=pokemon, name=name)
+    return render_template('find_pokemon.html', pokemon='')
 
 
 @app.route('/logout')
